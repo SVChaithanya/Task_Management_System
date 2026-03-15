@@ -1,0 +1,40 @@
+2026-02-25 21:34:24,808 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-08 08:59:29,039 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-08 08:59:31,148 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-08 08:59:42,414 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-08 09:13:30,002 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-08 09:32:13,583 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-15 10:38:06,513 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-15 10:38:42,598 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-15 10:39:14,750 - DEBUG - detected 'bcrypt' backend, version '4.0.1'
+2026-03-15 10:39:14,750 - DEBUG - 'bcrypt' backend lacks $2$ support, enabling workaround
+2026-03-15 10:39:15,190 - INFO - user registered: user123@example.com
+2026-03-15 10:39:57,131 - DEBUG - Calling on_field_start with no data
+2026-03-15 10:39:57,131 - DEBUG - Calling on_field_name with data[0:10]
+2026-03-15 10:39:57,131 - DEBUG - Calling on_field_data with data[11:19]
+2026-03-15 10:39:57,131 - DEBUG - Calling on_field_end with no data
+2026-03-15 10:39:57,131 - DEBUG - Calling on_field_start with no data
+2026-03-15 10:39:57,131 - DEBUG - Calling on_field_name with data[20:28]
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_data with data[29:50]
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_end with no data
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_start with no data
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_name with data[51:59]
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_data with data[60:66]
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_end with no data
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_start with no data
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_name with data[67:72]
+2026-03-15 10:39:57,132 - DEBUG - Calling on_field_end with no data
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_start with no data
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_name with data[74:83]
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_data with data[84:90]
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_end with no data
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_start with no data
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_name with data[91:104]
+2026-03-15 10:39:57,133 - DEBUG - Calling on_field_data with data[105:113]
+2026-03-15 10:39:57,134 - DEBUG - Calling on_field_end with no data
+2026-03-15 10:39:57,134 - DEBUG - Calling on_end with no data
+2026-03-15 10:39:57,473 - INFO - Login success: user123@example.com
+2026-03-15 10:43:27,819 - INFO - Project created by user 10e4bc5e-9ddc-489b-9f0f-c95992281fbd
+2026-03-15 10:44:19,465 - INFO - Task assigned to 10e4bc5e-9ddc-489b-9f0f-c95992281fbd
+2026-03-15 10:53:20,983 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>
+2026-03-15 10:55:33,865 - DEBUG - registered 'bcrypt' handler: <class 'passlib.handlers.bcrypt.bcrypt'>

@@ -10,8 +10,8 @@ from db import get_db
 security = os.getenv("SECURITY_KEY")
 if not security:
     raise RuntimeError("SECURITY_KEY not found")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_MIN = 15
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_MIN = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 15))
 REFRESH_TOKEN_DAY = 7
 
 # Logging

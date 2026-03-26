@@ -1,138 +1,109 @@
-# Task Management System API (2026)
+# Task Management System API
 
-Backend REST API for managing projects, tasks, and team collaboration.
+Backend system design project — REST API with RBAC, cursor-based pagination, atomic transactions, and full CI.
 
-## Overview
-
-Task Management System API is a backend service built for handling project workflows including user authentication, project management, task assignment, and comments. The system supports secure role-based access and structured relational data management.
-
-## Features
-
-* User Registration and Login
-* JWT Authentication
-* Role-Based Access Control
-* Project Management
-* Task Assignment and Tracking
-* Comment System
-* Ownership Validation
-* Soft Delete for Data Safety
-* Logging Support
+---
 
 ## Tech Stack
 
-* Python
-* FastAPI
-* PostgreSQL
-* SQLAlchemy ORM
-* JWT Authentication
+- FastAPI
+- PostgreSQL
+- SQLAlchemy ORM
+- JWT
+- RBAC
+- Alembic
+- pytest
+- GitHub Actions
 
-## Database Design
+---
 
-Relational schema includes the following core tables:
+## Overview
 
-* Users
-* Roles
-* Projects
-* Tasks
-* Comments
+Fully featured task management backend across 4 domains: auth, projects, tasks, comments.
+20+ REST endpoints. Built to demonstrate real backend system design — not just CRUD.
 
-Relationships between entities are managed using SQLAlchemy ORM.
+---
 
-## API Capabilities
+## System Design Highlights
 
-The system provides 20+ RESTful API endpoints including:
+### Schema Design
+- 5-table normalised schema
+- FK constraints and cascade deletes
+- Soft delete via `deleted_at` column — data recovery without data loss
+- Composite indexes on `(user_id, project_id)` and `(user_id, status)` — replaced full-table scans with index scans
 
-### Authentication
+---
 
-* Register User
-* Login
-* Refresh Token
-* Verify User
+### Pagination
+- Cursor-based pagination — avoids loading full result sets into memory on large datasets
 
-### Project Management
+---
 
-* Create Project
-* Update Project
-* View Projects
-* Delete Project
+### Filtering
+- Server-side filtering: status, priority, assigned_to, date range
+- SQLAlchemy dynamic filter chaining — injection-safe, composable, no raw SQL
 
-### Task Management
+---
 
-* Create Task
-* Assign Task
-* Update Task
-* Delete Task
-* View Tasks
+### Atomic Transactions
+- Create task + write audit_log in a single transaction
+- Audit failure rolls back task creation
+- DB never left in a partial state
 
-### Comments
+---
 
-* Add Comment
-* View Comments
-* Delete Comment
+## Auth & Permissions
 
-## Security
+- JWT access + refresh tokens
+- RBAC: admin bypasses ownership checks; regular users modify only their own tasks
+- Alembic migrations for schema versioning
 
-* Password hashing
-* JWT token authentication
-* Role-based authorization
-* Ownership validation for resource modification
+---
 
-## Project Structure
+## Testing & CI
 
-```
-project/
-│
-├── routes/
-│   ├── login.py
-│   ├── reg.py
-│   ├── refresh.py
-│   ├── verify.py
-│   ├── project.py
-│   └── task.py
-│
-├── auth.py
-├── db.py
-├── models.py
-├── schemas.py
-├── main.py
-│
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
+25 pytest tests covering:
+- Registration and login
+- JWT expiry
+- Task CRUD
+- Ownership boundary enforcement
+- Admin bypass
+- Soft delete and recovery
+- Invalid payload handling
 
-## Installation
+All tests run on every push via GitHub Actions (ubuntu-latest, Python 3.11)
 
-Clone the repository:
+---
 
-```
-git clone https://github.com/YOUR_USERNAME/Task_Management_System.git
-cd Task_Management_System
-```
+## API Endpoints
 
-Install dependencies:
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /auth/register | Register user |
+| POST | /auth/login | Get JWT tokens |
+| POST | /projects | Create project |
+| GET | /projects/{id}/tasks | List tasks with filters + pagination |
+| POST | /tasks | Create task |
+| PATCH | /tasks/{id} | Update task |
+| DELETE | /tasks/{id} | Soft delete task |
+| POST | /tasks/{id}/comments | Add comment |
 
-```
+---
+
+## Local Setup
+```bash
+git clone https://github.com/SVChaithanya/task-management-api
+cd task-management-api
 pip install -r requirements.txt
-```
-
-Run the server:
-
-```
+alembic upgrade head
 uvicorn main:app --reload
 ```
 
-API documentation will be available at:
+Swagger UI: http://localhost:8000/docs
 
+---
+
+## Run Tests
+```bash
+pytest tests/ -v
 ```
-http://127.0.0.1:8000/docs
-```
-
-## Deployment
-
-The API can be deployed using cloud platforms with environment-based configuration. Example platforms include Render or other container-based hosting solutions.
-
-## Author
-
-Surya
-Backend Developer | Python | FastAPI
